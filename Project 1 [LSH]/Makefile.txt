@@ -1,0 +1,27 @@
+OBJS 	= main.o ADT.o LSHfunctions.o LSHAlgorithm.o
+SOURCE	= Main.c ADT.c LSHfunctions.c LSHAlgorithm.c
+HEADER  = ADT.h LSHfunctions.h LSHAlgorithm.h
+OUT  	= lsh
+CC	= gcc
+CFLAGS   = -g -c 
+
+all: $(OBJS)
+	$(CC) -g $(OBJS) -o $(OUT) -lm
+
+main.o: main.c
+	$(CC) $(CFLAGS) main.c
+
+ADT.o: ADT.c
+	$(CC) $(CFLAGS) ADT.c
+	
+LSHfunctions.o: LSHfunctions.c
+	$(CC) $(CFLAGS) LSHfunctions.c
+
+LSHAlgorithm.o: LSHAlgorithm.c
+	$(CC) $(CFLAGS) LSHAlgorithm.c
+
+clean:
+	rm -f $(OBJS) $(OUT)
+
+count:
+	wc $(SOURCE) $(HEADER)
